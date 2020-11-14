@@ -1,6 +1,6 @@
 <template>
   <div class="todo-item">
-    <label for="">
+    <label >
       <input type="checkbox" :checked="todoItem.completed" @click="$emit('change-state', $event)" />
       {{ todoItem.content }}
       <span class="check-button"></span>
