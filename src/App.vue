@@ -1,11 +1,9 @@
 <template>
   <main>
     <div class="container">
-      <h1>
-        欢迎使用 Huang 待办事项！
-      </h1>
-      <todo-filter />
+      <h1>欢迎使用 Huang 待办事项！</h1>
       <todo-add />
+      <todo-filter />
       <todo-list />
     </div>
   </main>
