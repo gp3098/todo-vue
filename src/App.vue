@@ -13,7 +13,7 @@
 import TodoList from "./components/TodoList";
 import TodoAdd from "./components/TodoAdd";
 import TodoFilter from "./components/TodoFilter.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 export default {
   name: "App",
   components: {
@@ -24,9 +24,21 @@ export default {
   setup() {
     const todos = ref([]);
     const addTodo = (todo) => todos.value.push(todo);
+    const filter = ref("all");
+    const filterTodos = computed(() => {
+      switch (filter.value) {
+        case "done":
+          return todos.value.filter((todo) => todo.completed);
+        case "todo":
+          return todos.value.filter((todo) => !todo.completed);
+        default:
+          return todos.value;
+      }
+    });
     return {
       todos,
       addTodo,
+      filterTodos,
     };
   },
 };
