@@ -2,9 +2,9 @@
   <main>
     <div class="container">
       <h1>欢迎使用 Huang 待办事项！</h1>
-      <todo-add />
+      <todo-add :tid="todos.length" @add-todo="addTodo" />
       <todo-filter />
-      <todo-list />
+      <todo-list :todos="todos" />
     </div>
   </main>
 </template>
@@ -13,12 +13,21 @@
 import TodoList from "./components/TodoList";
 import TodoAdd from "./components/TodoAdd";
 import TodoFilter from "./components/TodoFilter.vue";
+import { ref } from "vue";
 export default {
   name: "App",
   components: {
     TodoList,
     TodoAdd,
     TodoFilter,
+  },
+  setup() {
+    const todos = ref([]);
+    const addTodo = (todo) => todos.value.push(todo);
+    return {
+      todos,
+      addTodo,
+    };
   },
 };
 </script>
